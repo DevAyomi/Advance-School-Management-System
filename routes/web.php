@@ -54,5 +54,6 @@ Route::prefix('admin')->name('admin.')->group(function(){
 		Route::view('/home', 'dashboard.admin.home')->name('home');
 		Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
 		Route::get('/view', [AdminController::class, 'AdminView'])->name('view');
+		Route::get('/add', [AdminController::class, 'AddAdmin'])->name('add');
 	});
 });

@@ -43,6 +43,10 @@ class AdminController extends Controller
         $data['allData'] = Admin::all();
         return view('backend.admin.view_admin',$data);
     }
+
+    public function AddAdmin(){
+        return view('backend.admin.add_admin');
+    }
 }
 
 
