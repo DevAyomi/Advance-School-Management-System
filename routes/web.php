@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ForgotPasswordController;
+use App\Models\Admin;
 
 
 /*
@@ -55,5 +56,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
 		Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
 		Route::get('/view', [AdminController::class, 'AdminView'])->name('view');
 		Route::get('/add', [AdminController::class, 'AddAdmin'])->name('add');
+		Route::post('/store', [AdminController::class, 'AdminStore'])->name('create');
+
 	});
 });

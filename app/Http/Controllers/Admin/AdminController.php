@@ -47,6 +47,26 @@ class AdminController extends Controller
     public function AddAdmin(){
         return view('backend.admin.add_admin');
     }
+
+
+    public function AdminStore(Request $request){
+        $validatedData = $request->validate([
+
+            'email' => 'required|unique:users',
+            'name' => 'required|'
+
+        ]);
+
+        $data = new Admin();
+        $data->role = $request->usertype;
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->password = bcrypt($request->password);
+
+        $save = $data->save();
+
+        return redirect()->route('admin.view');
+    }
 }
 
 

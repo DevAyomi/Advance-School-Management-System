@@ -5,7 +5,7 @@
 		
         <div class="user-profile">
 			<div class="ulogo">
-				 <a href="index.html">
+				 <a href="{{ route('admin.home')}}">
 				  <!-- logo for regular state and mobile devices -->
 					 <div class="d-flex align-items-center justify-content-center">					 	
 						  <img src="../images/logo-dark.png" alt="">
@@ -23,22 +23,23 @@
             <i data-feather="pie-chart"></i>
 			<span>Dashboard</span>
           </a>
-        </li>  
-		
+        </li> 
+
+		    @if(Auth::user()->role=='Admin')
         <li class="treeview">
           <a href="#">
             <i data-feather="message-circle"></i>
-            <span>Manage Admins</span>
+            <span>Manage Operators</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('admin.view') }}"><i class="ti-more"></i>View Admins</a></li>
-            <li><a href="calendar.html"><i class="ti-more"></i>Add Admins</a></li>
+            <li><a href="{{ route('admin.view') }}"><i class="ti-more"></i>View Operators</a></li>
+            <li><a href="{{ route('admin.add')}}"><i class="ti-more"></i>Add Operators</a></li>
           </ul>
         </li> 
-		  
+		    @endif
         <li class="treeview">
           <a href="#">
             <i data-feather="mail"></i> <span>Mailbox</span>

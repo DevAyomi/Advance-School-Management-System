@@ -18,7 +18,8 @@
 			  <div class="row">
 				<div class="col">
 					<!-- Form Starts Here -->
-					<form novalidate="">
+					<form action="{{ route('admin.create') }}" method="POST">
+						@csrf
 					  <div class="row">
 						<div class="col-12">	
 
@@ -27,9 +28,9 @@
 								<div class="form-group">
 									<h5>Role<span class="text-danger">*</span></h5>
 									<div class="controls">
-										<select name="usertype" id="select" required="" class="form-control">
+										<select name="usertype" id="usertype" required="" class="form-control">
 											<option value="" selected="" disabled="">Select Role</option>
-											<option value="1">Operator</option>
+											<option value="Operator">Operator</option>
 										</select>
 									<div class="help-block"></div></div>
 								</div>
@@ -63,15 +64,7 @@
 								</div>
 								</div><!--  End of second col-md-6 -->
 							</div> <!-- End Row -->
-
-
-
-
-							
-
-							
-
-							
+				
 						<div class="text-xs-right">
 							<input type="submit" class="btn btn-info btn-rounded mb-5" name="" value="submit">
 						</div>
