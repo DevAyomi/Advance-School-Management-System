@@ -11,7 +11,7 @@
 		  <div class="row">
 			  
 			<div class="col-12">
-
+				
 			 <div class="box">
 				<div class="box-header with-border">
 				  <h3 class="box-title">Admin Lists</h3>
@@ -38,7 +38,7 @@
 								<td>{{$user->name}}</td>
 								<td>{{$user->email}}</td>
 								<td>
-									<a href="" class="btn btn-info">Edit</a>
+									<a href="{{ url('admin/edit/'.$user->id) }}" class="btn btn-info">Edit</a>
 									<a href="" class="btn btn-danger">Delete</a>
 								</td>
 							</tr>
@@ -77,4 +77,6 @@
 	
 	<!-- Sunny Admin App -->
 	<script src="{{ asset('backend/js/template.js') }}"></script>
+	
+
 @endsection

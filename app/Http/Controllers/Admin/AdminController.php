@@ -38,14 +38,27 @@ class AdminController extends Controller
 
     //User Management All Routes
     public function AdminView(){
+       //Restricting this view for operators (Only SuperAdmins should be able to view)
+       if(Auth::user()->role ==='Admin'){
 
-        /*$allData = Admin::all();*/
-        $data['allData'] = Admin::all();
-        return view('backend.admin.view_admin',$data);
+            $data['allData'] = Admin::all();
+            return view('backend.admin.view_admin',$data);
+
+       }else{
+            return redirect('admin/error')->with('error', 'You are not allowed to access this page');
+       }
     }
 
+
     public function AddAdmin(){
-        return view('backend.admin.add_admin');
+        //Restricting Operators from being able to edit operators (Only SuperAdmins should be edit opertors deatails)
+       if(Auth::user()->role === 'Admin'){
+
+            return view('backend.admin.add_admin');
+
+       }else{
+             return redirect('admin/error')->with('error', 'You are not allowed to access this page');
+       }
     }
 
 
@@ -65,8 +78,46 @@ class AdminController extends Controller
 
         $save = $data->save();
 
-        return redirect()->route('admin.view');
+        $notification = array(
+
+            'message' => 'Operator Created Successfully',
+            'alert-type' => 'success',
+
+        );
+
+
+        return redirect()->route('admin.view')->with($notification);
     }
+
+    public function EditAdmin($id){
+
+        $editdata = Admin::find($id);
+        return view('backend.admin.edit_admin', compact('editdata'));
+    }
+
+
+    //Update Opertor Method
+    public function UpdateOp(Request $request, $id){
+
+        $data = Admin::find($id);
+        $data->role = $request->usertype;
+        $data->name = $request->name;
+        $data->email = $request->email;
+
+        $save = $data->save();
+
+        $notification = array(
+
+            'message' => 'Operator Updated Successfully',
+            'alert-type' => 'info',
+
+        );
+
+
+        return redirect()->route('admin.view')->with($notification);
+    }
+
+
 }
 
 

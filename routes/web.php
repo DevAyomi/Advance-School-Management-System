@@ -54,9 +54,14 @@ Route::prefix('admin')->name('admin.')->group(function(){
 	Route::middleware(['auth:admin','PreventBackHistory'])->group(function(){
 		Route::view('/home', 'dashboard.admin.home')->name('home');
 		Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
-		Route::get('/view', [AdminController::class, 'AdminView'])->name('view');
-		Route::get('/add', [AdminController::class, 'AddAdmin'])->name('add');
-		Route::post('/store', [AdminController::class, 'AdminStore'])->name('create');
-
+        Route::get('/view', [AdminController::class, 'AdminView'])->name('view');
+	    Route::get('/add', [AdminController::class, 'AddAdmin'])->name('add');
+	    Route::post('/store', [AdminController::class, 'AdminStore'])->name('create');
+		Route::get('/edit/{id}', [AdminController::class, 'EditAdmin']);
+		Route::view('/error', 'backend.admin.error')->name('error');
+		Route::post('/update/{id}', [AdminController::class, 'UpdateOp'])->name('update');
 	});
 });
+
+
+       
