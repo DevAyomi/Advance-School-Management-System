@@ -107,14 +107,24 @@ class AdminController extends Controller
         $save = $data->save();
 
         $notification = array(
-
             'message' => 'Operator Updated Successfully',
             'alert-type' => 'info',
-
         );
-
-
         return redirect()->route('admin.view')->with($notification);
+    }
+
+
+    //Delete Operator Methof Here
+    public function DeleteAdmin($id){
+
+        $user = Admin::find($id);
+        $user->delete();
+
+        $notification = array(
+            'message' => 'Operator Deleted Successfully',
+            'alert-type' => 'error',
+        );
+         return redirect()->route('admin.view')->with($notification);
     }
 
 

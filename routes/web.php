@@ -60,6 +60,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
 		Route::get('/edit/{id}', [AdminController::class, 'EditAdmin']);
 		Route::view('/error', 'backend.admin.error')->name('error');
 		Route::post('/update/{id}', [AdminController::class, 'UpdateOp'])->name('update');
+		Route::get('/delete/{id}', [AdminController::class, 'DeleteAdmin'])->name('delete');
 	});
 });
 
