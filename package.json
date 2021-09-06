@@ -7,7 +7,8 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "start": "npm run prod"
     },
     "devDependencies": {
         "axios": "^0.21",
@@ -20,5 +21,9 @@
         "resolve-url-loader": "^4.0.0",
         "sass": "^1.32.11",
         "sass-loader": "^11.0.1"
+    },
+    "engines": {
+        "node": "14.17.0",
+        "npm": "7.20.3"
     }
 }
